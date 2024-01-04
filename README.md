@@ -1,38 +1,52 @@
-# create-svelte
+# sukolog-zero frontend
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+`sukolog-zero` is Bluesky's log storage service.
 
-## Creating a project
+This repository is the frontend of `sukolog-zero`.
 
-If you're seeing this, you've probably already done this step. Congrats!
+[README 日本語版](README.ja.md)
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+## Framework and language
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+We use [Svelte](https://svelte.dev/) and [SvelteKit](https://kit.svelte.dev/) as frameworks.
 
-## Developing
+- For testing purposes, we have introduced Svelte 5, which is in preview stage. Therefore, dependent packages include packages that are not in the release version.
+- Also, some packages are not yet supported, so warnings may appear at build time.
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+TypeScript is used as the programming language.
 
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
+## Execution Environment
 
 ```bash
-npm run build
+$ node --version
+v20.10.0
+$ corepack --version
+0.24.0
+$ yarn --version
+4.0.2
 ```
 
-You can preview the production build with `npm run preview`.
+I am using `node` 20.x series, `yarn` 4.0.x as package manager, and `corepack` as package manager/manager.
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+It is registered in `package.json` as `"packageManager": "yarn@4.0..."`.
+
+### installation
+
+```bash
+$ yarn
+```
+
+### Execution
+
+```bash
+$ yarn run dev
+
+# open a browser
+$ yarn run dev -- --open
+```
+
+### build
+
+```bash
+$ yarn run build
+```
