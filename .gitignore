@@ -36,3 +36,7 @@ Thumbs.db
 # vite configuration
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# IDE
+/.idea/
+/.vscode/
