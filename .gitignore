@@ -1,26 +1,5 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# dependencies
-/node_modules/
-
-#testing
-/test-results/
-
-# sveltekit
-/.svelte-kit/
-
-# production
-/build/
-
-# yarn
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/sdks
-!.yarn/versions
-
 # OS Dependencies
 .DS_Store
 Thumbs.db
@@ -29,13 +8,7 @@ Thumbs.db
 .env*.local
 .env
 !.env.example
-
-# package files
-/package
-
-# vite configuration
-vite.config.js.timestamp-*
-vite.config.ts.timestamp-*
+.envrc
 
 # IDE
 /.idea/
