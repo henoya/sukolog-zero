@@ -250,6 +250,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@floating-ui/core@npm:^1.5.3":
+  version: 1.5.3
+  resolution: "@floating-ui/core@npm:1.5.3"
+  dependencies:
+    "@floating-ui/utils": "npm:^0.2.0"
+  checksum: 5fc8fa0d6f99ac91ae42bdfc06c4dea60ae0a979d8f7c74ebc8e9e9770d3c88a0afa6efce459fcdc0c3922176763477d13bc27b93d3838c8b81851e753193976
+  languageName: node
+  linkType: hard
+
 "@floating-ui/dom@npm:^1.5.3":
   version: 1.5.3
   resolution: "@floating-ui/dom@npm:1.5.3"
@@ -260,10 +269,27 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@floating-ui/dom@npm:^1.5.4":
+  version: 1.5.4
+  resolution: "@floating-ui/dom@npm:1.5.4"
+  dependencies:
+    "@floating-ui/core": "npm:^1.5.3"
+    "@floating-ui/utils": "npm:^0.2.0"
+  checksum: 8a47ac5b8cf90214d73011d436d66821ccb7f4b9a29170e23117df2cc6008845834db7f59e73d998add19807f62f09e5e6a84516eed81cebbf25770dea595a84
+  languageName: node
+  linkType: hard
+
 "@floating-ui/utils@npm:^0.1.3":
   version: 0.1.6
   resolution: "@floating-ui/utils@npm:0.1.6"
   checksum: 0a089db0e0526b89e83cb0a773a903517db5c9067cd473febfd8fa91a3a2ccbc3a835234796c1bb528def21dbb67be50e28d9c473cb58a6d90679d7e549b9c0c
+  languageName: node
+  linkType: hard
+
+"@floating-ui/utils@npm:^0.2.0":
+  version: 0.2.1
+  resolution: "@floating-ui/utils@npm:0.2.1"
+  checksum: ee77756712cf5b000c6bacf11992ffb364f3ea2d0d51cc45197a7e646a17aeb86ea4b192c0b42f3fbb29487aee918a565e84f710b8c3645827767f406a6b4cc9
   languageName: node
   linkType: hard
 
@@ -971,7 +997,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"apexcharts@npm:^3.44.0":
+"apexcharts@npm:^3.44.0, apexcharts@npm:^3.45.1":
   version: 3.45.1
   resolution: "apexcharts@npm:3.45.1"
   dependencies:
@@ -1841,7 +1867,32 @@ __metadata:
   languageName: node
   linkType: hard
 
-"flowbite-svelte@npm:^0.44.21, flowbite-svelte@npm:^0.44.4":
+"flowbite-svelte-icons@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "flowbite-svelte-icons@npm:1.0.2"
+  peerDependencies:
+    svelte: ^3.54.0 || ^4.0.0
+    tailwind-merge: ^2.0.0
+    tailwindcss: ^3.3.2
+  checksum: 5e337e4babd2a7ea0019b46149fc0dfbebc9fcdff63a906e9d6bc189abe89ef1ed700007afe65b2a9d6670ef683d217912d06469c6e9aa5e96e7583e6eb642b7
+  languageName: node
+  linkType: hard
+
+"flowbite-svelte@npm:^0.44.22":
+  version: 0.44.22
+  resolution: "flowbite-svelte@npm:0.44.22"
+  dependencies:
+    "@floating-ui/dom": "npm:^1.5.4"
+    apexcharts: "npm:^3.45.1"
+    flowbite: "npm:^2.2.1"
+    tailwind-merge: "npm:^2.2.0"
+  peerDependencies:
+    svelte: ^4.0.0
+  checksum: fc7bc411959f18bd57eca812ee98e71c18d64007617f35e841b558860452c525c7ee183b172317ddc26189166697978f711b878402d42bd9ede116f5c0a62b07
+  languageName: node
+  linkType: hard
+
+"flowbite-svelte@npm:^0.44.4":
   version: 0.44.21
   resolution: "flowbite-svelte@npm:0.44.21"
   dependencies:
@@ -3702,8 +3753,9 @@ __metadata:
     eslint-config-prettier: "npm:^9.1.0"
     eslint-plugin-svelte: "npm:^v2.36.0-next.3"
     flowbite: "npm:^2.2.1"
-    flowbite-svelte: "npm:^0.44.21"
+    flowbite-svelte: "npm:^0.44.22"
     flowbite-svelte-blocks: "npm:^0.5.1"
+    flowbite-svelte-icons: "npm:^1.0.2"
     postcss: "npm:^8.4.32"
     postcss-load-config: "npm:^5.0.2"
     prettier: "npm:^3.1.1"
@@ -3711,7 +3763,9 @@ __metadata:
     prettier-plugin-tailwindcss: "npm:^0.5.9"
     svelte: "npm:^5.0.0-next.1"
     svelte-check: "npm:^3.6.0"
+    svelte-heros: "npm:^2.6.0"
     svelte-preprocess: "npm:^5.1.3"
+    tailwind-merge: "npm:^2.2.0"
     tailwindcss: "npm:^3.4.0"
     tslib: "npm:^2.4.1"
     typescript: "npm:^5.0.0"
@@ -3771,6 +3825,15 @@ __metadata:
     svelte:
       optional: true
   checksum: 9b7e51d7c1e0d1af7b3f635b8d7edf363093189d17a3f24f73aff4e390b06517b75699fe0810c8a95e11e7489ec69abf15085f4c41a2f4dc3cf75ac9ab4b8e36
+  languageName: node
+  linkType: hard
+
+"svelte-heros@npm:^2.6.0":
+  version: 2.9.2
+  resolution: "svelte-heros@npm:2.9.2"
+  peerDependencies:
+    svelte: ^3.54.0
+  checksum: 33d7c450eafc47808d4d5de51463968cf2fd67be8a61fae36ed20792d0ccd3562c6d40b20d9076ed02063c367613a165b8e16f7bd3caa278a043a5824f98be41
   languageName: node
   linkType: hard
 
@@ -3927,7 +3990,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tailwind-merge@npm:^2.0.0":
+"tailwind-merge@npm:^2.0.0, tailwind-merge@npm:^2.2.0":
   version: 2.2.0
   resolution: "tailwind-merge@npm:2.2.0"
   dependencies:
