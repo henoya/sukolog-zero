@@ -293,13 +293,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fontsource/fira-mono@npm:^4.5.10":
-  version: 4.5.10
-  resolution: "@fontsource/fira-mono@npm:4.5.10"
-  checksum: 8641de09916db27f9d5f0394030d239d062a9931c57db33cc9f63df26d15730e26f012c7b37686a5a964129a0d41162165cdde9983fecbbea5dc8e1502e70be7
-  languageName: node
-  linkType: hard
-
 "@humanwhocodes/config-array@npm:^0.11.13":
   version: 0.11.13
   resolution: "@humanwhocodes/config-array@npm:0.11.13"
@@ -387,6 +380,16 @@ __metadata:
     "@jridgewell/resolve-uri": "npm:^3.1.0"
     "@jridgewell/sourcemap-codec": "npm:^1.4.14"
   checksum: 0ea0b2675cf513ec44dc25605616a3c9b808b9832e74b5b63c44260d66b58558bba65764f81928fc1033ead911f8718dca1134049c3e7a93937faf436671df31
+  languageName: node
+  linkType: hard
+
+"@jridgewell/trace-mapping@npm:^0.3.18":
+  version: 0.3.21
+  resolution: "@jridgewell/trace-mapping@npm:0.3.21"
+  dependencies:
+    "@jridgewell/resolve-uri": "npm:^3.1.0"
+    "@jridgewell/sourcemap-codec": "npm:^1.4.14"
+  checksum: 4ae1c862ca0a12e1fb08ee48bb2fd65667a5258a97cc37a8708ff1e1d6a351e6a1166f2f806a9d9b9680f841da9fbde35fe6bd971eee3bdf1c10ea669ba5707a
   languageName: node
   linkType: hard
 
@@ -618,7 +621,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sveltejs/vite-plugin-svelte@npm:^3.0.0-next.3":
+"@sveltejs/vite-plugin-svelte@npm:^3.0.1":
   version: 3.0.1
   resolution: "@sveltejs/vite-plugin-svelte@npm:3.0.1"
   dependencies:
@@ -653,7 +656,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/estree@npm:*, @types/estree@npm:^1.0.1":
+"@types/estree@npm:*, @types/estree@npm:^1.0.0, @types/estree@npm:^1.0.1":
   version: 1.0.5
   resolution: "@types/estree@npm:1.0.5"
   checksum: b3b0e334288ddb407c7b3357ca67dbee75ee22db242ca7c56fe27db4e1a31989cb8af48a84dd401deb787fe10cc6b2ab1ee82dc4783be87ededbe3d53c79c70d
@@ -887,15 +890,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"acorn-typescript@npm:^1.4.11":
-  version: 1.4.13
-  resolution: "acorn-typescript@npm:1.4.13"
-  peerDependencies:
-    acorn: ">=8.9.0"
-  checksum: f2f17cf03379d63beeb007f0feea02cebbd9af261f6b5619ea7345b177bd7a5f99752927cbf652baa3fc97962ae4561592093ab0a1c3e00ca4f354ba23c557ae
-  languageName: node
-  linkType: hard
-
 "acorn-walk@npm:^8.3.0":
   version: 8.3.1
   resolution: "acorn-walk@npm:8.3.1"
@@ -1067,12 +1061,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axobject-query@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "axobject-query@npm:4.0.0"
+"axobject-query@npm:^3.2.1":
+  version: 3.2.1
+  resolution: "axobject-query@npm:3.2.1"
   dependencies:
     dequal: "npm:^2.0.3"
-  checksum: 4d756b5c2ff099f1c7f99e55a5de9b2066cb2a13a3170185ff34bfec2d7bcab81eb820a4e7340d35c251341b61ebee6e705b7ce64db78224df1df5a4d68448fe
+  checksum: f7debc2012e456139b57d888c223f6d3cb4b61eb104164a85e3d346273dd6ef0bc9a04b6660ca9407704a14a8e05fa6b6eb9d55f44f348c7210de7ffb350c3a7
   languageName: node
   linkType: hard
 
@@ -1254,6 +1248,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"code-red@npm:^1.0.3":
+  version: 1.0.4
+  resolution: "code-red@npm:1.0.4"
+  dependencies:
+    "@jridgewell/sourcemap-codec": "npm:^1.4.15"
+    "@types/estree": "npm:^1.0.1"
+    acorn: "npm:^8.10.0"
+    estree-walker: "npm:^3.0.3"
+    periscopic: "npm:^3.1.0"
+  checksum: 1309f062369ae520c422d7f45b93190faea2cbc7e3fe3375918f36bb394030d0936d940601426564c30abc71b8aa8e6d1505cccd67a8620183fb01c84bcb7304
+  languageName: node
+  linkType: hard
+
 "color-convert@npm:^2.0.1":
   version: 2.0.1
   resolution: "color-convert@npm:2.0.1"
@@ -1299,6 +1306,16 @@ __metadata:
     shebang-command: "npm:^2.0.0"
     which: "npm:^2.0.1"
   checksum: 5738c312387081c98d69c98e105b6327b069197f864a60593245d64c8089c8a0a744e16349281210d56835bb9274130d825a78b2ad6853ca13cfbeffc0c31750
+  languageName: node
+  linkType: hard
+
+"css-tree@npm:^2.3.1":
+  version: 2.3.1
+  resolution: "css-tree@npm:2.3.1"
+  dependencies:
+    mdn-data: "npm:2.0.30"
+    source-map-js: "npm:^1.0.1"
+  checksum: 6f8c1a11d5e9b14bf02d10717fc0351b66ba12594166f65abfbd8eb8b5b490dd367f5c7721db241a3c792d935fc6751fbc09f7e1598d421477ad9fadc30f4f24
   languageName: node
   linkType: hard
 
@@ -1578,9 +1595,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-svelte@npm:^v2.36.0-next.3":
-  version: 2.36.0-next.3
-  resolution: "eslint-plugin-svelte@npm:2.36.0-next.3"
+"eslint-plugin-svelte@npm:^2.35.1":
+  version: 2.35.1
+  resolution: "eslint-plugin-svelte@npm:2.35.1"
   dependencies:
     "@eslint-community/eslint-utils": "npm:^4.2.0"
     "@jridgewell/sourcemap-codec": "npm:^1.4.14"
@@ -1593,14 +1610,14 @@ __metadata:
     postcss-safe-parser: "npm:^6.0.0"
     postcss-selector-parser: "npm:^6.0.11"
     semver: "npm:^7.5.3"
-    svelte-eslint-parser: "npm:>=0.34.0-next.4 <1.0.0"
+    svelte-eslint-parser: "npm:>=0.33.0 <1.0.0"
   peerDependencies:
     eslint: ^7.0.0 || ^8.0.0-0
-    svelte: ^3.37.0 || ^4.0.0 || ^5.0.0-next.16
+    svelte: ^3.37.0 || ^4.0.0
   peerDependenciesMeta:
     svelte:
       optional: true
-  checksum: 5c8160840e5f601384a247121406f6ad551678911239eee15f895bc917326d6b3b2cbc9ab93e35b0027f2dd1550b99eea2b56626c8c9c9b63ca0bfcb89efee9a
+  checksum: 653cb18a6ca20836b69be5cdd6525e4b9c0c9d15e1ff81992680322653d92f7f37021bfc6a58deba6d2f1661bbd394daed292a71d2c0127751946026df3fc7e9
   languageName: node
   linkType: hard
 
@@ -1696,16 +1713,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"esrap@npm:^1.2.1":
-  version: 1.2.1
-  resolution: "esrap@npm:1.2.1"
-  dependencies:
-    "@jridgewell/sourcemap-codec": "npm:^1.4.15"
-    "@types/estree": "npm:^1.0.1"
-  checksum: 28d6e36adcf4342a844a938a736132269c33e9db6bbefc98c6af5ed06c14899afcc85391e7ce4824ce5066877fa10b0ed5c5007592cbc58012be95f13c66467f
-  languageName: node
-  linkType: hard
-
 "esrecurse@npm:^4.3.0":
   version: 4.3.0
   resolution: "esrecurse@npm:4.3.0"
@@ -1719,6 +1726,15 @@ __metadata:
   version: 5.3.0
   resolution: "estraverse@npm:5.3.0"
   checksum: 1ff9447b96263dec95d6d67431c5e0771eb9776427421260a3e2f0fdd5d6bd4f8e37a7338f5ad2880c9f143450c9b1e4fc2069060724570a49cf9cf0312bd107
+  languageName: node
+  linkType: hard
+
+"estree-walker@npm:^3.0.0, estree-walker@npm:^3.0.3":
+  version: 3.0.3
+  resolution: "estree-walker@npm:3.0.3"
+  dependencies:
+    "@types/estree": "npm:^1.0.0"
+  checksum: c12e3c2b2642d2bcae7d5aa495c60fa2f299160946535763969a1c83fc74518ffa9c2cd3a8b69ac56aea547df6a8aac25f729a342992ef0bbac5f1c73e78995d
   languageName: node
   linkType: hard
 
@@ -2308,7 +2324,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"is-reference@npm:^3.0.1":
+"is-reference@npm:^3.0.0, is-reference@npm:^3.0.1":
   version: 3.0.2
   resolution: "is-reference@npm:3.0.2"
   dependencies:
@@ -2536,6 +2552,13 @@ __metadata:
     promise-retry: "npm:^2.0.1"
     ssri: "npm:^10.0.0"
   checksum: 43b9f6dcbc6fe8b8604cb6396957c3698857a15ba4dbc38284f7f0e61f248300585ef1eb8cc62df54e9c724af977e45b5cdfd88320ef7f53e45070ed3488da55
+  languageName: node
+  linkType: hard
+
+"mdn-data@npm:2.0.30":
+  version: 2.0.30
+  resolution: "mdn-data@npm:2.0.30"
+  checksum: a2c472ea16cee3911ae742593715aa4c634eb3d4b9f1e6ada0902aa90df13dcbb7285d19435f3ff213ebaa3b2e0c0265c1eb0e3fb278fda7f8919f046a410cd9
   languageName: node
   linkType: hard
 
@@ -3000,6 +3023,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"periscopic@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "periscopic@npm:3.1.0"
+  dependencies:
+    "@types/estree": "npm:^1.0.0"
+    estree-walker: "npm:^3.0.0"
+    is-reference: "npm:^3.0.0"
+  checksum: fb5ce7cd810c49254cdf1cd3892811e6dd1a1dfbdf5f10a0a33fb7141baac36443c4cad4f0e2b30abd4eac613f6ab845c2bc1b7ce66ae9694c7321e6ada5bd96
+  languageName: node
+  linkType: hard
+
 "picocolors@npm:^1.0.0":
   version: 1.0.0
   resolution: "picocolors@npm:1.0.0"
@@ -3187,7 +3221,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.4.23, postcss@npm:^8.4.29, postcss@npm:^8.4.32, postcss@npm:^8.4.5":
+"postcss@npm:^8.4.23, postcss@npm:^8.4.32":
   version: 8.4.32
   resolution: "postcss@npm:8.4.32"
   dependencies:
@@ -3195,6 +3229,17 @@ __metadata:
     picocolors: "npm:^1.0.0"
     source-map-js: "npm:^1.0.2"
   checksum: 39308a9195fa34d4dbdd7b58a896cff0c7809f84f7a4ac1b95b68ca86c9138a395addff33075668ed3983d41b90aac05754c445237a9365eb1c3a5602ebd03ad
+  languageName: node
+  linkType: hard
+
+"postcss@npm:^8.4.29, postcss@npm:^8.4.5":
+  version: 8.4.33
+  resolution: "postcss@npm:8.4.33"
+  dependencies:
+    nanoid: "npm:^3.3.7"
+    picocolors: "npm:^1.0.0"
+    source-map-js: "npm:^1.0.2"
+  checksum: 16eda83458fcd8a91bece287b5920c7f57164c3ea293e6c80d0ea71ce7843007bcd8592260a5160b9a7f02693e6ac93e2495b02d8c7596d3f3f72c1447e3ba79
   languageName: node
   linkType: hard
 
@@ -3616,7 +3661,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"source-map-js@npm:^1.0.2":
+"source-map-js@npm:^1.0.1, source-map-js@npm:^1.0.2":
   version: 1.0.2
   resolution: "source-map-js@npm:1.0.2"
   checksum: 32f2dfd1e9b7168f9a9715eb1b4e21905850f3b50cf02cf476e47e4eebe8e6b762b63a64357896aa29b37e24922b4282df0f492e0d2ace572b43d15525976ff8
@@ -3740,18 +3785,17 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "sukolog-zero-frontend@workspace:."
   dependencies:
-    "@fontsource/fira-mono": "npm:^4.5.10"
     "@playwright/test": "npm:^1.30.0"
     "@sveltejs/adapter-auto": "npm:^3.0.0"
     "@sveltejs/kit": "npm:^2.0.0"
-    "@sveltejs/vite-plugin-svelte": "npm:^3.0.0-next.3"
+    "@sveltejs/vite-plugin-svelte": "npm:^3.0.1"
     "@types/eslint": "npm:8.56.0"
     "@typescript-eslint/eslint-plugin": "npm:^6.0.0"
     "@typescript-eslint/parser": "npm:^6.0.0"
     autoprefixer: "npm:^10.4.16"
     eslint: "npm:^8.56.0"
     eslint-config-prettier: "npm:^9.1.0"
-    eslint-plugin-svelte: "npm:^v2.36.0-next.3"
+    eslint-plugin-svelte: "npm:^2.35.1"
     flowbite: "npm:^2.2.1"
     flowbite-svelte: "npm:^0.44.22"
     flowbite-svelte-blocks: "npm:^0.5.1"
@@ -3761,9 +3805,8 @@ __metadata:
     prettier: "npm:^3.1.1"
     prettier-plugin-svelte: "npm:^3.1.2"
     prettier-plugin-tailwindcss: "npm:^0.5.9"
-    svelte: "npm:^5.0.0-next.1"
+    svelte: "npm:^4.2.8"
     svelte-check: "npm:^3.6.0"
-    svelte-heros: "npm:^2.6.0"
     svelte-preprocess: "npm:^5.1.3"
     tailwind-merge: "npm:^2.2.0"
     tailwindcss: "npm:^3.4.0"
@@ -3810,9 +3853,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"svelte-eslint-parser@npm:>=0.34.0-next.4 <1.0.0":
-  version: 0.34.0-next.6
-  resolution: "svelte-eslint-parser@npm:0.34.0-next.6"
+"svelte-eslint-parser@npm:>=0.33.0 <1.0.0":
+  version: 0.33.1
+  resolution: "svelte-eslint-parser@npm:0.33.1"
   dependencies:
     eslint-scope: "npm:^7.0.0"
     eslint-visitor-keys: "npm:^3.0.0"
@@ -3820,20 +3863,11 @@ __metadata:
     postcss: "npm:^8.4.29"
     postcss-scss: "npm:^4.0.8"
   peerDependencies:
-    svelte: ^3.37.0 || ^4.0.0 || ^5.0.0-next.17
+    svelte: ^3.37.0 || ^4.0.0
   peerDependenciesMeta:
     svelte:
       optional: true
-  checksum: 9b7e51d7c1e0d1af7b3f635b8d7edf363093189d17a3f24f73aff4e390b06517b75699fe0810c8a95e11e7489ec69abf15085f4c41a2f4dc3cf75ac9ab4b8e36
-  languageName: node
-  linkType: hard
-
-"svelte-heros@npm:^2.6.0":
-  version: 2.9.2
-  resolution: "svelte-heros@npm:2.9.2"
-  peerDependencies:
-    svelte: ^3.54.0
-  checksum: 33d7c450eafc47808d4d5de51463968cf2fd67be8a61fae36ed20792d0ccd3562c6d40b20d9076ed02063c367613a165b8e16f7bd3caa278a043a5824f98be41
+  checksum: 2a3b5e2a91ed34eccfbf7aee43d3f64f2f49c32d9f0694d45cecd12f41bac0e251f43ac8839980f8158a566452ebeb576a9e188a5822868286f75a1136736b97
   languageName: node
   linkType: hard
 
@@ -3892,23 +3926,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"svelte@npm:^5.0.0-next.1":
-  version: 5.0.0-next.28
-  resolution: "svelte@npm:5.0.0-next.28"
+"svelte@npm:^4.2.8":
+  version: 4.2.8
+  resolution: "svelte@npm:4.2.8"
   dependencies:
     "@ampproject/remapping": "npm:^2.2.1"
     "@jridgewell/sourcemap-codec": "npm:^1.4.15"
-    acorn: "npm:^8.10.0"
-    acorn-typescript: "npm:^1.4.11"
+    "@jridgewell/trace-mapping": "npm:^0.3.18"
+    acorn: "npm:^8.9.0"
     aria-query: "npm:^5.3.0"
-    axobject-query: "npm:^4.0.0"
-    esm-env: "npm:^1.0.0"
-    esrap: "npm:^1.2.1"
+    axobject-query: "npm:^3.2.1"
+    code-red: "npm:^1.0.3"
+    css-tree: "npm:^2.3.1"
+    estree-walker: "npm:^3.0.3"
     is-reference: "npm:^3.0.1"
     locate-character: "npm:^3.0.0"
     magic-string: "npm:^0.30.4"
-    zimmerframe: "npm:^1.1.0"
-  checksum: d309cd3d1a9fe16c67a626af867288b02f6e7c49311c851aeb0f36feb5ab9603ca5594338fb933dbbada41b26faea6dcef52ed6ab3e86f54626545e53059eb28
+    periscopic: "npm:^3.1.0"
+  checksum: 13673a6211cc38224398f4bda8e0ba93edfb1338aa4f28f614a31ac31b152479038761cfc57f1668554f5ab70effcd8023dcf549d75e7b2a7ae703d213b7e9da
   languageName: node
   linkType: hard
 
@@ -4452,12 +4487,5 @@ __metadata:
   version: 1.0.0
   resolution: "yocto-queue@npm:1.0.0"
   checksum: 856117aa15cf5103d2a2fb173f0ab4acb12b4b4d0ed3ab249fdbbf612e55d1cadfd27a6110940e24746fb0a78cf640b522cc8bca76f30a3b00b66e90cf82abe0
-  languageName: node
-  linkType: hard
-
-"zimmerframe@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "zimmerframe@npm:1.1.0"
-  checksum: dffe3f555bb000176ed9c7577e0fb0c3eddeceb6df9bb3ff870995bac3a51b40fab5443bd3dc47ce91c1f8ecf07282742efb80771ae6a088edc0340bb217f93d
   languageName: node
   linkType: hard
