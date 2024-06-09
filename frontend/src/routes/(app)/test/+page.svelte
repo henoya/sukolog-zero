@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Button, Dropdown, DropdownItem, DropdownDivider } from 'flowbite-svelte';
-  import { ChevronDownSolid, ChevronRightSolid } from 'flowbite-svelte-icons';
+  import { ChevronDownOutline, ChevronRightOutline } from 'flowbite-svelte-icons';
 import type { Placement } from '@floating-ui/dom';
   let placement: Placement;
       placement = "right-start";
@@ -11,7 +11,7 @@ import type { Placement } from '@floating-ui/dom';
   let activeClass = 'text-blue-700 dark:text-blue-300 hover:text-blue-900 dark:hover:text-blue-500';
 </script>
 
-<Button>Dropdown button<ChevronDownSolid class="w-3 h-3 ms-2 text-white dark:text-white" /></Button>
+<Button>Dropdown button<ChevronDownOutline class="w-3 h-3 ms-2 text-white dark:text-white" /></Button>
 <Dropdown>
  <div slot="header" class="px-4 py-2">
    <span class="block text-sm text-gray-900 dark:text-white">Bonnie Green</span>
@@ -24,7 +24,7 @@ import type { Placement } from '@floating-ui/dom';
  <DropdownItem slot="footer">Separated link</DropdownItem>
 </Dropdown>
 
-<Button>Dropdown button<ChevronDownSolid class="w-3 h-3 ms-2 text-white dark:text-white" /></Button>
+<Button>Dropdown button<ChevronDownOutline class="w-3 h-3 ms-2 text-white dark:text-white" /></Button>
 <Dropdown>
  <div slot="header" class="px-4 py-2">
    <span class="block text-sm text-gray-900 dark:text-white">Bonnie Green</span>
@@ -36,18 +36,18 @@ import type { Placement } from '@floating-ui/dom';
  <DropdownItem slot="footer">Sign out</DropdownItem>
 </Dropdown>
 
-<Button>Dropdown button<ChevronDownSolid class="w-3 h-3 ms-2 text-white dark:text-white" /></Button>
+<Button>Dropdown button<ChevronDownOutline class="w-3 h-3 ms-2 text-white dark:text-white" /></Button>
 <Dropdown {activeUrl} {activeClass}>
  <DropdownItem href="/">Home</DropdownItem>
  <DropdownItem href="/test">Test</DropdownItem>
  <DropdownItem href="/about">About</DropdownItem>
 </Dropdown>
 
-<Button>Dropdown button<ChevronDownSolid class="w-3 h-3 ms-2 text-white dark:text-white" /></Button>
+<Button>Dropdown button<ChevronDownOutline class="w-3 h-3 ms-2 text-white dark:text-white" /></Button>
 <Dropdown>
   <DropdownItem>Dashboard</DropdownItem>
   <DropdownItem class="flex items-center justify-between">
-    Dropdown<ChevronRightSolid class="w-3 h-3 ms-2 text-primary-700 dark:text-white" />
+    Dropdown<ChevronRightOutline class="w-3 h-3 ms-2 text-primary-700 dark:text-white" />
   </DropdownItem>
   <Dropdown placement="right-start">
     <DropdownItem>Overview</DropdownItem>
