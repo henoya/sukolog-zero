@@ -1,3 +1,12 @@
+<svelte:head>
+	<title>Home</title>
+</svelte:head>
+<style lang="postcss">
+	:global(html) {
+		background-color: theme(colors.gray.100);
+	}
+</style>
+
 <script lang='ts'>
 	import {
 		Avatar,
