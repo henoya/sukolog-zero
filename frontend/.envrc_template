@@ -1,0 +1,274 @@
+#!/bin/bash
+
+export LITE_FS_CLOUD_TOKEN="xxxxx xxx_xxxxxxxxxxxxxxxxxxxx+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/xxxxxxxxxxxxxxxxxx+xxx+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx+xxxxxxxxxxxxxxxxxxxxxxxx/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx,xxx_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx+xxxxxxxxxxxxxxxxxxxxxxxx/xxxxxxxxxxxxxxx+xxxxxxxxxxxxx/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx+x/xxxxxxxxxxxxxxxxxx="
+
+#---
+
+# 色出力コード定義
+ESC=$(printf '\033')
+RESET="${ESC}[0m"
+RED="${ESC}[31m"
+eval "$(printf "TAB='\\011' LF='\\012' ESC='\\033'")"
+
+function color_output() {
+  if [[ $# -le 0 ]]; then
+    return 1
+  fi
+  message="$1"
+  color="${2:-${RED}}"
+  if [ -t 1 ]; then
+    # 標準出力が端末に向けられている場合、エスケープシーケンスを使って色を付ける
+    echo -e "${color}${message}${RESET}"
+  else
+    # 標準出力が端末以外（ファイルやパイプなど）に向けられている場合、エスケープシーケンスを使わない
+    echo "${message}"
+  fi
+}
+
+function output_remaining_times() {
+  if [[ $# -le 0 ]]; then
+    return 1
+  fi
+  remaining="$1"
+  days=$((remaining/60/60/24))
+  hours=$((remaining/60/60%24))
+  minutes=$((remaining/60%60))
+  seconds=$((remaining%60))
+
+  echo -n "残り"
+  if [[ ${days} -ge 1 ]]; then
+    echo -n " ${days}日"
+  fi
+  echo -n " ${hours}時間"
+  echo -n " ${minutes}分"
+  echo " ${seconds}秒"
+}
+
+function expires_check() {
+  if [[ $# -le 0 ]]; then
+    echo "引数が足りません。"
+    return 1
+  fi
+  expires_date="$1"
+  expires_name="${2:-}"
+  if [[ ! -z "${expires_name}" ]]; then
+    expires_name="${expires_name}の"
+  fi
+  expires_remaining="${3:-}"
+  expires_remaining="${expires_remaining//[^0-9]/}"
+  if [[ -z "${expires_remaining}" ]]; then
+    expires_remaining="7"
+  fi
+  # 有効期限をチェック
+  unixdate=$(date -j -f '%Y/%m/%d %H:%M:%S' "${expires_date} 00:00:00" +'%s')
+  # 期限まで指定期間を切ったら警告表示
+  remaining=$((unixdate - $(date +%s)))
+  if [[ ${remaining} -le 0 ]]; then
+    echo "${FUNCNAME[0]}: ${expires_name}有効期限が切れています。"
+    return 1
+  fi
+  if [[ ${remaining} -le $((expires_remaining * 24 * 60 * 60)) ]]; then
+    color_output "${FUNCNAME[0]}: ${expires_name}有効期限が近いため、更新してください。"
+    color_output "期限日: ${APP_SECRET_EXPIRES}"
+    output_remaining_times "${remaining}"
+  fi
+}
+
+function result_file_exist_check() {
+  if [[ $# -lt 1 ]]; then
+    echo "${FUNCNAME[0]}: 引数が足りません。 $*"
+    return 1
+  fi
+  local file="$1"
+  local name="$2"
+  if [[ ! -f "${file}" ]] && [[ -z "$(cat "${file}")" ]]; then
+    rm -f "${file}"
+    if [[ -z "${name}" ]]; then
+      name="${file##*/}"
+    fi
+    printf "${FUNCNAME[0]}: %s が取得できませんでした。\n" "${name}"
+    exit 1
+  fi
+
+}
+
+function print_error() {
+  local func_name=
+  if [[ -z "${#FUNCNAME[1]}" ]]; then
+    func_name="${FUNCNAME[0]}"
+  else
+    func_name="${FUNCNAME[1]}"
+  fi
+  local message=$1
+  echo "${func_name}: ${message}"
+}
+
+function calc_hash() {
+  local file="$1"
+
+  if [[ $# -le 0 ]]; then
+    print_error "引数が足りません。$*"
+    return 1
+  elif [[ ! -f "${file}" ]]; then
+    print_error "ファイルが存在しません。${file}"
+    return 1
+  fi
+
+  sha256sum "${file}" | cut -d' ' -f 1
+}
+
+function replace_file() {
+  local target_file="$1"
+  local src_file="$2"
+
+  if [[ $# -lt 2 ]]; then
+    print_error "引数が足りません。必要な引数: [引数1] [引数2]"
+    print_error "指定された引数: $*"
+    return 1
+  fi
+
+  local target_hash
+  local src_hash
+
+  target_hash=$(calc_hash "${target_file}") ||  
+  if [[ $? -ne 0 ]]; then
+    print_error "${target_file} のハッシュ計算に失敗しました。"
+    return 1
+  fi
+
+  src_hash=$(calc_hash "${src_file}")
+  if [[ $? -ne 0 ]]; then
+    print_error "${src_file} のハッシュ計算に失敗しました。"
+    return 1
+  fi
+
+  if [[ "${target_hash}" != "${src_hash}" ]]; then
+    echo "${target_file} が更新されました。"
+    cp -f "${src_file}" "${target_file}"
+    rm -f "${src_file}"
+  fi
+}
+
+# if ! expires_check "${APP_SECRET_EXPIRES}" "クライアントシークレット" 7; then
+#   exit 1
+# fi
+
+# .envrc を元に .envrc_template、.env と .env_template を作成する
+cmd_name=".envrc"
+cmd_path="./"
+
+# direnv allow 実行時の引数から .envrc のパスを取得
+for ((i=0;i<=$#;i++)); do
+  p="${!i}"
+  if [[ "${p##*/}" =~ ".envrc" ]]; then
+    cmd_name="${p##*/}"
+    cmd_path="${p%/*}"
+    break
+  fi
+done
+
+# .envrc ファイルのパス
+envrc_path="$(printf "%s/%s" "${cmd_path}" "${cmd_name}")"
+# .envrc_template ファイルのパス
+envrc_template_path="$(printf "%s/%s" "${cmd_path}" ".envrc_template")"
+if [[ ! -f "${envrc_template_path}" ]]; then
+  touch "${envrc_template_path}"
+fi
+# .env ファイルのパス
+env_path="$(printf "%s/%s" "${cmd_path}" ".env.local")"
+if [[ ! -f "${env_path}" ]]; then
+  touch "${env_path}"
+fi
+# .env_template ファイルのパス
+env_template_path="$(printf "%s/%s" "${cmd_path}" ".env_template")"
+if [[ ! -f "${env_template_path}" ]]; then
+  touch "${env_template_path}"
+fi
+# 作業用一時ファイルのパス
+env_tmp_path="/tmp/envrc_tmp$$"
+
+# .envrc から .env ファイルを作成
+gawk -f - "${envrc_path}" <<'__AWK_END' >"${env_tmp_path}"
+BEGIN{
+  # 最初のブロックモードは "header"
+  # "header" ブロックモード 最初の export 文で 環境変数を設定している部分 #--- という行まで
+  # "script" ブロックモード #--- という行以降はスクリプト部分なので、特に加工しないでそのまま出力する
+  block_mode="header"
+}
+{
+  if (block_mode == "header") {
+    # "header" ブロックモード の場合の処理
+    if ($0 ~ /^#---/) {
+      block_mode="body"
+      next
+    }
+    if ($0 ~ /^#/) {
+
+    } else if ($0 ~ /^export /) {
+      if (match($0, /^export\s+(.+)=(.+)/, m)) {
+        printf "%s=%s\n", m[1], m[2]
+      }
+    }
+  }
+}
+__AWK_END
+
+result_file_exist_check "${env_tmp_path}" ".env" || exit 1
+replace_file "${env_path}" "${env_tmp_path}" || exit 1
+
+# .env から .env_template ファイルを作成
+gawk -f - "${env_path}" <<'__AWK_END' >"${env_tmp_path}"
+{
+  if (match($0, /^([^=]+)=(.+)/, m)) {
+    # print "m1:" m[1]
+    # print "m2:" m[2]
+    val = m[2]
+    gsub(/[a-zA-Z0-9]/, "x", val)
+    printf "%s=%s\n", m[1], val
+  }
+}
+__AWK_END
+
+result_file_exist_check "${env_tmp_path}" ".env_template" || exit 1
+replace_file "${env_template_path}" "${env_tmp_path}"
+
+# .envrc から .envrc_template ファイルを作成
+gawk -f - "${envrc_path}" <<'__AWK_END' >"${env_tmp_path}"
+BEGIN{
+  # 最初のブロックモードは "header"
+  # "header" ブロックモード 最初の export 文で 環境変数を設定している部分 #--- という行まで
+  # "script" ブロックモード #--- という行以降はスクリプト部分なので、出力しないで切り捨てる
+  block_mode="header"
+}
+{
+  if (block_mode == "header") {
+    # "header" ブロックモード の場合の処理
+    if ($0 ~ /^#---/) {
+      # "#---" で始まる行があったら、ブロックモードを "script" に変更する
+      block_mode="script"
+      print $0
+      next
+    }
+    if ($0 ~ /^#/) {
+      print $0
+    } else if ($0 ~ /^export /) {
+      if (match($0, /^(export +)([^=]+)=(.+)/, m)) {
+        e = m[1]
+        env = m[2]
+        val = m[3]
+        gsub(/[a-zA-Z0-9]/, "x", val)
+        printf "%s%s=%s\n", e, env, val
+      }
+    } else {
+      print $0
+    }
+  }
+  if (block_mode == "script") {
+    # "script" ブロックモード の場合の処理
+    print $0
+  }
+}
+__AWK_END
+
+result_file_exist_check "${env_tmp_path}" ".envrc_template" || exit 1
+replace_file "${envrc_template_path}" "${env_tmp_path}" || exit 1
